@@ -7,7 +7,7 @@ defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 
 $config = [
-    'id' => 'yii2-sentry-log-target',
+    'id' => 'yii2-papertrail-log-target',
     'basePath' => __DIR__,
     'bootstrap' => ['log'],
     'components' => [
