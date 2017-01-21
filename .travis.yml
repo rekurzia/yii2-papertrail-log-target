@@ -24,7 +24,7 @@ script:
   - ./vendor/bin/phpcs --extensions=php --standard=./vendor/yiisoft/yii2-coding-standards/Yii2/ --ignore=vendor,tests .
   - docker-compose up -d udp-listener
   - php tests/run.php | grep "Page not found"
-  - docker-compose logs udp-listener | grep "exception 'yii\web\NotFoundHttpException' with message 'Page not found.'"
+  - docker-compose logs udp-listener | grep 'Page not found'
 
 after_failure:
   - docker-compose logs udp-listener
