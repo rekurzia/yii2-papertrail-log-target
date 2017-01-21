@@ -16,7 +16,7 @@ $config = [
                 [
                     'class' => Rekurzia\Log\PapertrailTarget::class,
                     'levels' => ['error', 'warning'],
-                    'host' => '0.0.0.0',
+                    'host' => 'localhost',
                     'port' => '1234',
                 ],
             ]
