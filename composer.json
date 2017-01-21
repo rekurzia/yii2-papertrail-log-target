@@ -1,7 +1,7 @@
 {
     "name": "rekurzia/yii2-papertrail-log-target",
     "type": "library",
-    "description": "Minimal implementation of Yii2 log target sending messages to Papertrail.",
+    "description": "Minimal implementation of Yii2 log target sending messages to Papertrail",
     "keywords": ["Yii2", "Papertrail", "log", "target"],
     "homepage": "https://github.com/rekurzia/yii2-papertrail-log-target",
     "license": "MIT",
