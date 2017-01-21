@@ -1,3 +1,4 @@
+
 # Yii2 Papertrail log target
 
 [![Build Status](https://travis-ci.org/rekurzia/yii2-papertrail-log-target.svg?branch=master)](https://travis-ci.org/rekurzia/yii2-papertrail-log-target)
@@ -24,3 +25,7 @@ $config['components']['log']['targets'] = [
     ],
 ];
 ```
+
+## License
+
+MIT. See [license.txt](license.txt) file.
