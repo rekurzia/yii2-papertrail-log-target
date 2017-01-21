@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+
+  app:
+    build: .
+    stdin_open: true
+    tty: true
+    command: bash
+    volumes:
+      - ./:/code
+      - ./php-dev.ini:/usr/local/etc/php/php.ini
+    working_dir: /code
+
+  udp-listener:
+    image: mendhak/udp-listener
+    environment:
+      - UDPPORT=1234
+    ports:
+      - "1234/udp:1234/udp"

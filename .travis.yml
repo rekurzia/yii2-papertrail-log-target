@@ -1,0 +1,30 @@
+sudo: required
+
+services:
+  - docker
+
+language: php
+
+php:
+  - '5.6'
+  - '7.0'
+  - '7.1'
+  - nightly
+
+matrix:
+  allow_failures:
+    - php: nightly
+
+install:
+  - php tests/yii-provide-fix.php
+  - composer install --prefer-dist --no-interaction
+  - docker-compose build udp-listener
+
+script:
+  - ./vendor/bin/phpcs --extensions=php --standard=./vendor/yiisoft/yii2-coding-standards/Yii2/ --ignore=vendor,tests .
+  - docker-compose up udp-listener -d
+  - php tests/run.php | grep "Page not found"
+  - docker-compose logs udp-listener | grep "exception 'yii\web\NotFoundHttpException' with message 'Page not found.'"
+
+after_script:
+  - docker-compose down
