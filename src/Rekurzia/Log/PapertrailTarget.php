@@ -27,6 +27,13 @@ class PapertrailTarget extends Target
     public $includeContextMessage = false;
 
     /**
+     * A PHP callable that returns a string to be prefixed to every exported message.
+     * Useful when standard prefix is not enough. @see Target::prefix
+     * @var callable
+     */
+    public $additionalPrefix;
+
+    /**
      * @var UdpSocket
      */
     private $_socket;
@@ -42,6 +49,9 @@ class PapertrailTarget extends Target
         }
         if ($this->port === null) {
             throw new InvalidConfigException('The "port" property must be set.');
+        }
+        if ($this->additionalPrefix !== null && !is_callable($this->additionalPrefix)) {
+            throw new InvalidConfigException('The "additionalPrefix" property must be callable.');
         }
     }
 
@@ -75,5 +85,17 @@ class PapertrailTarget extends Target
     protected function getContextMessage()
     {
         return $this->includeContextMessage ? parent::getContextMessage() : '';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getMessagePrefix($message)
+    {
+        if ($this->additionalPrefix !== null) {
+            return '[' . call_user_func($this->additionalPrefix) . ']' . parent::getMessagePrefix($message);
+        } else {
+            return parent::getMessagePrefix($message);
+        }
     }
 }
