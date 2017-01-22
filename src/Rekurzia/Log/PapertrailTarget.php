@@ -9,19 +9,29 @@ use Monolog\Handler\SyslogUdp\UdpSocket;
 class PapertrailTarget extends Target
 {
     /**
+     * Host to connect
      * @var string
      */
     public $host;
 
     /**
+     * Port to connect
      * @var int
      */
     public $port;
 
     /**
+     * Whether to include also context message. Defaults to false.
      * @var bool
      */
     public $includeContextMessage = false;
+
+    /**
+     * A PHP callable that returns a string to be prefixed to every exported message.
+     * Useful when standard prefix is not enough. @see Target::prefix
+     * @var callable
+     */
+    public $additionalPrefix;
 
     /**
      * @var UdpSocket
@@ -39,6 +49,9 @@ class PapertrailTarget extends Target
         }
         if ($this->port === null) {
             throw new InvalidConfigException('The "port" property must be set.');
+        }
+        if ($this->additionalPrefix !== null && !is_callable($this->additionalPrefix)) {
+            throw new InvalidConfigException('The "additionalPrefix" property must be callable.');
         }
     }
 
@@ -72,5 +85,17 @@ class PapertrailTarget extends Target
     protected function getContextMessage()
     {
         return $this->includeContextMessage ? parent::getContextMessage() : '';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getMessagePrefix($message)
+    {
+        if ($this->additionalPrefix !== null) {
+            return '[' . call_user_func($this->additionalPrefix) . ']' . parent::getMessagePrefix($message);
+        } else {
+            return parent::getMessagePrefix($message);
+        }
     }
 }
