@@ -9,16 +9,19 @@ use Monolog\Handler\SyslogUdp\UdpSocket;
 class PapertrailTarget extends Target
 {
     /**
+     * Host to connect
      * @var string
      */
     public $host;
 
     /**
+     * Port to connect
      * @var int
      */
     public $port;
 
     /**
+     * Whether to include also context message. Defaults to false.
      * @var bool
      */
     public $includeContextMessage = false;
