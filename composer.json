@@ -7,6 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "~5.6|~7.0",
+        "ext-sockets": "*",
         "yiisoft/yii2": "~2.0",
         "monolog/monolog": "~1.0"
     },
