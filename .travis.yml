@@ -26,8 +26,6 @@ script:
   - php tests/run.php | grep "Page not found"
   - docker-compose logs udp-listener | grep 'Page not found'
 
-after_failure:
-  - docker-compose logs udp-listener
-
 after_script:
+  - docker-compose logs udp-listener
   - docker-compose down
