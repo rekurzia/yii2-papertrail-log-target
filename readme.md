@@ -47,6 +47,12 @@ enough. Setting as in example above, additional prefix `[yourApplicationId]` wil
 
 **Optional.** Whether to include also context message. Defaults to `false`.
 
+### Sample output
+
+![Sample output screenshot](sample.png?raw=true)
+
+Usage of `additionalPrefix` highlighted.
+
 ## License
 
 MIT. See [license](license.txt) file.
