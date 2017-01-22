@@ -49,4 +49,4 @@ enough. Setting as in example above, additional prefix `[yourApplicationId]` wil
 
 ## License
 
-MIT. See [license.txt](license.txt) file.
+MIT. See [license](license.txt) file.
