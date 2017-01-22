@@ -18,6 +18,9 @@ $config = [
                     'levels' => ['error', 'warning'],
                     'host' => 'localhost',
                     'port' => '1234',
+                    'additionalPrefix' => function() {
+                        return Yii::$app->id;
+                    },
                 ],
             ]
         ]
