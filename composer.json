@@ -9,18 +9,11 @@
         "php": "~7.0|^8.0",
         "ext-sockets": "*",
         "yiisoft/yii2": "~2.0",
-        "tundeoladejo/yii2-papertrail-log-target": "dev-master",
         "monolog/monolog": "~3.0"
     },
     "require-dev": {
         "yiisoft/yii2-coding-standards": "~2.0"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/TundeOladejo/yii2-papertrail-log-target.git"
-        }
-    ],
     "authors": [
         {
             "name": "Vladimír Kriška",
